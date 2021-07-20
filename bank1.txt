@@ -1,0 +1,14 @@
+package exercise;
+
+class BankApplication {
+
+	public static void main(String[] args)
+	{
+		System.out.println("Welcome to ust bank");
+		BankAccount obj=new BankAccount();
+		obj.details();
+		
+
+	}
+
+}

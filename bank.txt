@@ -1,0 +1,166 @@
+package exercise;
+
+import java.util.Scanner;
+
+class BankAccount 
+{
+	float balance;
+	float previousTransction;
+	
+	void deposit(float amount)
+	{
+		if(amount!=0)
+		{
+			balance = balance+amount;
+			previousTransction =amount;
+		}
+	}
+	void withdrawl(float amount)
+	{
+		if(amount!=0 && amount<=balance)
+		{
+			balance = balance-amount;
+			previousTransction= -amount;
+		}
+		else
+			System.out.println("Insufficient Balance\nAvailable balance:"+balance);
+	}
+	void getpevioustransction()
+	{
+		if(previousTransction>0)
+		{
+			System.out.println("Deposite"+previousTransction);
+		}
+		else if(previousTransction<0)
+		{
+			System.out.println("withdrawl"+Math.abs(previousTransction));
+		}
+		else
+		{
+			System.out.println("No Transaction occured");
+			
+		}
+		
+		
+	}
+void AccountCreation()
+	{
+		Scanner a=new Scanner(System.in);
+		System.out.println("Enter your name");
+		String name = a.nextLine();
+		System.out.println("Enter Aadhar Number");
+		long aadhar = a.nextLong();
+		System.out.println("Enter Phone number");
+		long phone = a.nextLong();
+		int accountnumber=1122;
+		System.out.println("----------------------------------------");
+		System.out.println("Account ready to use");
+		System.out.println("Account holder name"+name);
+		System.out.println("your account number:"+accountnumber);
+		details2();
+	}
+	void details()
+	{
+		int select=0;
+		Scanner s=new Scanner(System.in);
+		System.out.println("1.New costumer\n2.Existing Account\n3.Exit");
+		do
+		{
+			System.out.println("**************************************");
+			System.out.println("Enter your option");
+			select =s.nextInt();
+			switch(select)
+			{
+			case 1:
+			
+				System.out.println("new costumer");
+				AccountCreation();
+			break;
+			case 2:
+			
+				System.out.println("existing account");
+			details2();
+		break;	
+			case 3:
+				System.out.println("exit");
+			break;
+		 default:
+			 System.out.println("invalid option");
+			 break;
+			}
+		}
+			 while (select != 3);
+				System.out.println("Thanks for using our services");
+			
+		
+	}
+	void details2()
+	{
+		int option=0;
+		Scanner sc=new Scanner(System.in);
+		System.out.println("\n");
+		System.out.println("Enter Account Holder Name:");
+		String name=sc.next();
+		System.out.println("Enter Account number:");
+		int accountnumber= sc.nextInt();
+		System.out.println("welcome "+name);
+		System.out.println("your Account number:"+accountnumber);
+		System.out.println("1.Check Balance\n2.Deposite\n3.Withdraw\n4.PreviousTransction\n5.exit");
+		do
+		{
+			System.out.println("-----------------------------------");
+			System.out.println("Enter your option");
+			option =sc.nextInt();
+			System.out.println("\n");
+		
+			switch(option)
+			{
+			case 1:
+			System.out.println("----------------------------------------");
+			System.out.println("balance"+balance);
+			System.out.println("----------------------------------------");
+			System.out.println("\n");
+			break;
+			case 2:
+				System.out.println("---------------------------------------");
+				System.out.println("Enter Deposite amount:");
+				System.out.println("----------------------------------------");
+				float amount=sc.nextFloat();
+				deposit(amount);
+				System.out.println("\n");
+				break;
+				
+			case 3:
+				System.out.println("---------------------------------------");
+				System.out.println("Enter Withdraw amount:");
+				System.out.println("----------------------------------------");
+				float amount2=sc.nextFloat();
+				withdrawl(amount2);
+				System.out.println("\n");
+				break;
+				
+			case 4:
+				System.out.println("---------------------------------------------");
+				 getpevioustransction();
+				System.out.println("---------------------------------------------");
+				System.out.println("\n");
+				break;
+			case 5:
+				System.out.println("exit");
+			break;
+		 default:
+			 System.out.println("invalid option");
+			 break;
+			}
+		}
+		while(option!=5);
+		System.out.println("Thanks for using our services");
+		System.out.println("1.New costumer\n2.Existing Account\n3.Exit");
+		
+			
+		
+		}
+	
+		
+	}
+	
